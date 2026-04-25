@@ -3,8 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class TeleportToScene : MonoBehaviour
 {
-    [Header("Scene Name")]
-    public string sceneToLoad; // ชื่อ Scene ที่จะวาปไป
+    public string sceneToLoad;
 
     private void OnTriggerEnter(Collider other)
     {

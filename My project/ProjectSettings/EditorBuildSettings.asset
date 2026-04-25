@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tin/2.unity
     guid: dc61a063e6079664f8b958df6ef513c7
+  - enabled: 1
+    path: Assets/Tin/Cutsecne.unity
+    guid: 7d82fb9c371f0044dbf7770bac17a712
+  - enabled: 1
+    path: Assets/Tin/Final.unity
+    guid: 966a68072e58780429ae054172669b08
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
