@@ -3,8 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class HeatSystem : MonoBehaviour
 {
-    [Header("Target (สำคัญมาก)")]
-    public Transform playerTarget;    // ลากกระดูก Head หรือกระดูกส่วนที่ต้องการให้เส้นตามมาใส่
+    [Header("Targets (ใส่ให้ครบ)")]
+    public Transform animatedBody; // ตัวเดินปกติ
+    public Transform ragdollHips;  // สะโพกตัวย้วย
 
     [Header("Heat Settings")]
     public float maxHeat = 100f;
@@ -17,18 +18,33 @@ public class HeatSystem : MonoBehaviour
 
     [Header("Raycast Config")]
     public float rayDistance = 100f;
-    public LayerMask obstacleLayer;  // อย่าลืมเอา Layer Player ออกจากช่องนี้
+    public LayerMask obstacleLayer;
+
+    // 🔥 เพิ่มช่องสำหรับกำหนดความสูง
+    [Header("Raycast Position Adjust")]
+    public float heightOffset = 0.5f; // ค่าเริ่มต้นคือ 0.5 เมตร (ลองปรับดูใน Unity)
 
     void Update()
     {
         if (sunTransform == null) return;
 
-        // 💡 ถ้าเราลากเป้าหมายมาใส่แล้ว ให้ใช้ตำแหน่งของเป้าหมายนั้นโดยตรง!
-        // ถ้าไม่ลากมาค่อยใช้ตำแหน่งของตัวเอง (Fallback)
-        Vector3 origin = (playerTarget != null) ? playerTarget.position : transform.position;
+        Transform currentTarget = (animatedBody != null && animatedBody.gameObject.activeInHierarchy) 
+            ? animatedBody : ragdollHips;
+
+        if (currentTarget == null) return;
+
+        // 💡 เปลี่ยนตรงนี้: เอารากของตำแหน่งมาบวกกับความสูงที่เราตั้งไว้
+        Vector3 origin = currentTarget.position + (Vector3.up * heightOffset);
+        
+        // ถ้าเป็น Ragdoll อาจจะต้องใช้ Hips ยิงแสงเหมือนเดิม เพราะมันนอนกองอยู่
+        if (ragdollHips != null && ragdollHips.gameObject.activeInHierarchy)
+        {
+            origin = ragdollHips.position; // ใช้ตำแหน่ง Hips ตรงๆ ตอนย้วย
+        }
 
         bool isInShade = CheckShade(origin);
 
+        // ... ส่วนคำนวณ Heat และ Die() เหมือนเดิม ...
         if (isInShade)
             currentHeat -= heatDecreaseRate * Time.deltaTime;
         else
@@ -41,24 +57,21 @@ public class HeatSystem : MonoBehaviour
     bool CheckShade(Vector3 checkPos)
     {
         Vector3 sunDirection = -sunTransform.forward;
-        
-        // ขยับจุดยิงให้ลอยเหนือเป้าหมายนิดหน่อยกันการชนตัวเอง
         Vector3 startPoint = checkPos + (sunDirection * 0.2f);
 
         if (Physics.Raycast(startPoint, sunDirection, out RaycastHit hit, rayDistance, obstacleLayer))
         {
-            // วาดเส้นสีเขียวจากจุดที่มันตาม (Target) ไปหาวัตถุที่ชน
             Debug.DrawLine(startPoint, hit.point, Color.green);
             return true; 
         }
 
-        // วาดเส้นสีแดงพุ่งขึ้นฟ้าจากจุดที่มันตาม (Target)
         Debug.DrawRay(startPoint, sunDirection * rayDistance, Color.red);
         return false;
     }
 
     void Die()
     {
+        currentHeat = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
