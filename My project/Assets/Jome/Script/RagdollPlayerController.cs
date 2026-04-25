@@ -2,136 +2,63 @@ using UnityEngine;
 
 public class RagdollPlayerController : MonoBehaviour
 {
-    [Header("Main Rigidbody")]
-    public Rigidbody hips;
-    public Rigidbody chest;
-
-    [Header("Camera")]
-    public Transform cameraTransform;
+    [Header("Main Body")]
+    public Rigidbody body;              
+    public Transform cameraTransform;   
 
     [Header("Movement")]
-    public float moveForce = 250f;
-    public float maxSpeed = 4f;
-    public float rotationSpeed = 6f;
+    public float moveForce = 40f;       
+    public float turnSpeed = 15f;       
 
     [Header("Balance")]
-    public float uprightForce = 250f;
-
-    [Header("Wobble")]
-    public float idleWobble = 10f;
-    public float moveWobble = 30f;
-
-    [Header("Ground Check")]
-    public Transform groundCheck;
-    public float groundDistance = 0.3f;
-    public LayerMask groundLayer;
-
-    bool isGrounded;
-
-    // 🔥 ตัวแก้สั่น
-    float wobbleTimer = 0f;
-    Vector3 wobbleDir;
+    public float uprightForce = 500f;   
+    public float balanceDamping = 10f;  
 
     void FixedUpdate()
     {
-        if (hips == null) return;
-
-        CheckGround();
-
-        Vector3 inputDir = GetMoveInput();
-
-        Move(inputDir);
-        LimitSpeed();
-
-        Balance();
-        Wobble(inputDir);
+        Move();
+        StayUpright();
     }
 
-    // ===================== INPUT =====================
-    Vector3 GetMoveInput()
+    void Move()
     {
-        if (cameraTransform == null) return Vector3.zero;
-
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
+        // 1. หาหน้าตรงของกล้องในระนาบพื้น (ตัดแกน Y)
         Vector3 camForward = cameraTransform.forward;
-        Vector3 camRight = cameraTransform.right;
-
         camForward.y = 0;
+        camForward.Normalize();
+
+        Vector3 camRight = cameraTransform.right;
         camRight.y = 0;
+        camRight.Normalize();
 
-        return (camForward * v + camRight * h).normalized;
-    }
+        // 2. ทิศทางที่กดปุ่ม (W,A,S,D)
+        Vector3 moveDir = (camForward * v + camRight * h).normalized;
 
-    // ===================== MOVE =====================
-    void Move(Vector3 dir)
-    {
-        if (dir.magnitude > 0.1f && isGrounded)
+        if (moveDir.magnitude > 0.1f)
         {
-            hips.AddForce(dir * moveForce);
+            // --- ส่วนที่แก้ให้เหมือน Roblox ---
+            
+            // 3. หมุนตัวละครให้หันไปทาง 'ทิศที่เดิน' (ซึ่งอิงจากกล้องแล้ว)
+            // ทิศนี้จะทำให้หน้าตัวละครหันออกจากกล้องเสมอเวลากด W
+            Quaternion targetRot = Quaternion.LookRotation(moveDir);
+            
+            // ใช้ MoveRotation เพื่อความนิ่งของ Ragdoll
+            body.MoveRotation(Quaternion.Slerp(body.rotation, targetRot, Time.fixedDeltaTime * turnSpeed));
 
-            Quaternion targetRot = Quaternion.LookRotation(dir);
-            hips.MoveRotation(Quaternion.Slerp(
-                hips.rotation,
-                targetRot,
-                rotationSpeed * Time.fixedDeltaTime
-            ));
+            // 4. ออกแรงเดิน
+            body.AddForce(moveDir * moveForce, ForceMode.Acceleration);
         }
     }
 
-    void LimitSpeed()
+    void StayUpright()
     {
-        Vector3 flatVel = new Vector3(hips.velocity.x, 0, hips.velocity.z);
+        Vector3 torque = Vector3.Cross(body.transform.up, Vector3.up);
+        body.AddTorque(torque * uprightForce, ForceMode.Acceleration);
 
-        if (flatVel.magnitude > maxSpeed)
-        {
-            Vector3 limited = flatVel.normalized * maxSpeed;
-            hips.velocity = new Vector3(limited.x, hips.velocity.y, limited.z);
-        }
-    }
-
-    // ===================== BALANCE =====================
-    void Balance()
-    {
-        Vector3 torque = Vector3.Cross(transform.up, Vector3.up);
-        hips.AddTorque(torque * uprightForce);
-    }
-
-    // ===================== WOBBLE (แก้สั่น) =====================
-    void Wobble(Vector3 inputDir)
-    {
-        if (chest == null) return;
-
-        // 🔥 เปลี่ยนทิศ wobble เป็นช่วงๆ ไม่ใช่ทุกเฟรม
-        wobbleTimer -= Time.fixedDeltaTime;
-
-        if (wobbleTimer <= 0f)
-        {
-            wobbleTimer = Random.Range(0.5f, 1.2f);
-
-            wobbleDir = new Vector3(
-                Random.Range(-1f, 1f),
-                0,
-                Random.Range(-1f, 1f)
-            ).normalized;
-        }
-
-        // 🔥 ถ้ายืนเฉย = โคลงน้อย
-        float wobbleForce = (inputDir.magnitude < 0.1f) ? idleWobble : moveWobble;
-
-        chest.AddTorque(wobbleDir * wobbleForce);
-    }
-
-    // ===================== GROUND =====================
-    void CheckGround()
-    {
-        if (groundCheck == null) return;
-
-        isGrounded = Physics.CheckSphere(
-            groundCheck.position,
-            groundDistance,
-            groundLayer
-        );
+        Vector3 antiSpin = -body.angularVelocity * balanceDamping;
+        body.AddTorque(antiSpin, ForceMode.Acceleration);
     }
 }

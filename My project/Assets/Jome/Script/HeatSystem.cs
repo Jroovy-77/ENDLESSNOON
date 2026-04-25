@@ -3,26 +3,31 @@ using UnityEngine.SceneManagement;
 
 public class HeatSystem : MonoBehaviour
 {
+    [Header("Target (สำคัญมาก)")]
+    public Transform playerTarget;    // ลากกระดูก Head หรือกระดูกส่วนที่ต้องการให้เส้นตามมาใส่
+
     [Header("Heat Settings")]
     public float maxHeat = 100f;
     public float currentHeat = 0f;
-
-    public float heatIncreaseRate = 10f;
-    public float heatDecreaseRate = 20f;
+    public float heatIncreaseRate = 15f;
+    public float heatDecreaseRate = 25f;
 
     [Header("Sun Settings")]
-    public Transform sunTransform; // ลาก Directional Light มาใส่
+    public Transform sunTransform;
 
-    [Header("Raycast Settings")]
-    public float rayDistance = 30f;
-    public LayerMask obstacleLayer;
-
-    [Header("Debug")]
-    public bool showDebugRay = true;
+    [Header("Raycast Config")]
+    public float rayDistance = 100f;
+    public LayerMask obstacleLayer;  // อย่าลืมเอา Layer Player ออกจากช่องนี้
 
     void Update()
     {
-        bool isInShade = CheckShade();
+        if (sunTransform == null) return;
+
+        // 💡 ถ้าเราลากเป้าหมายมาใส่แล้ว ให้ใช้ตำแหน่งของเป้าหมายนั้นโดยตรง!
+        // ถ้าไม่ลากมาค่อยใช้ตำแหน่งของตัวเอง (Fallback)
+        Vector3 origin = (playerTarget != null) ? playerTarget.position : transform.position;
+
+        bool isInShade = CheckShade(origin);
 
         if (isInShade)
             currentHeat -= heatDecreaseRate * Time.deltaTime;
@@ -30,49 +35,30 @@ public class HeatSystem : MonoBehaviour
             currentHeat += heatIncreaseRate * Time.deltaTime;
 
         currentHeat = Mathf.Clamp(currentHeat, 0, maxHeat);
-
-        if (currentHeat >= maxHeat)
-        {
-            Die();
-        }
+        if (currentHeat >= maxHeat) Die();
     }
 
-    bool CheckShade()
+    bool CheckShade(Vector3 checkPos)
     {
-        if (sunTransform == null)
+        Vector3 sunDirection = -sunTransform.forward;
+        
+        // ขยับจุดยิงให้ลอยเหนือเป้าหมายนิดหน่อยกันการชนตัวเอง
+        Vector3 startPoint = checkPos + (sunDirection * 0.2f);
+
+        if (Physics.Raycast(startPoint, sunDirection, out RaycastHit hit, rayDistance, obstacleLayer))
         {
-            Debug.LogError("❌ ยังไม่ได้ใส่ Directional Light!");
-            return false;
+            // วาดเส้นสีเขียวจากจุดที่มันตาม (Target) ไปหาวัตถุที่ชน
+            Debug.DrawLine(startPoint, hit.point, Color.green);
+            return true; 
         }
 
-        Vector3 sunDir = -sunTransform.forward;
-        Vector3 origin = transform.position + Vector3.up * 0.5f;
-
-        Vector3[] offsets = {
-            Vector3.zero,
-            Vector3.right * 0.3f,
-            Vector3.left * 0.3f
-        };
-
-        foreach (var offset in offsets)
-        {
-            Vector3 start = origin + offset;
-
-            if (showDebugRay)
-                Debug.DrawRay(start, sunDir * rayDistance, Color.red);
-
-            if (!Physics.Raycast(start, sunDir, rayDistance, obstacleLayer))
-            {
-                return false; // โดนแดด
-            }
-        }
-
-        return true; // อยู่ในเงา
+        // วาดเส้นสีแดงพุ่งขึ้นฟ้าจากจุดที่มันตาม (Target)
+        Debug.DrawRay(startPoint, sunDirection * rayDistance, Color.red);
+        return false;
     }
 
     void Die()
     {
-        Debug.Log("🔥 Player Burned!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
