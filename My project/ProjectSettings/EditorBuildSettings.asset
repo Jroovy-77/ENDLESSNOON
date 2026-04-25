@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tin/1.unity
     guid: 6e34bcd71bc3bf64db484d77e54338e5
+  - enabled: 1
+    path: Assets/Tin/2.unity
+    guid: dc61a063e6079664f8b958df6ef513c7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
