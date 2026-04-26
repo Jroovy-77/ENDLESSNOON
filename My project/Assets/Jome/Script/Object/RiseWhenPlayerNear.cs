@@ -3,14 +3,14 @@ using UnityEngine;
 public class RiseWhenPlayerNear : MonoBehaviour
 {
     [Header("Target")]
-    public Transform player; // ลาก Player มาใส่
+    public Transform player;
 
-    [Header("Range")]
-    public float detectRange = 5f; // ระยะตรวจจับ
+    [Header("Box Range")]
+    public Vector3 boxSize = new Vector3(5f, 3f, 5f); // ขนาดกล่องตรวจจับ (กว้าง, สูง, ลึก)
 
     [Header("Rise Settings")]
-    public float riseHeight = 3f;  // ความสูงที่โผล่ขึ้น
-    public float riseSpeed = 3f;   // ความเร็วในการขึ้น
+    public float riseHeight = 3f;
+    public float riseSpeed = 3f;
 
     private Vector3 startPos;
     private Vector3 targetPos;
@@ -27,17 +27,14 @@ public class RiseWhenPlayerNear : MonoBehaviour
     {
         if (player == null) return;
 
-        float distance = Vector3.Distance(transform.position, player.position);
-
-        // เข้าใกล้ → เริ่มโผล่
-        if (distance <= detectRange)
+        // เช็คว่า Player อยู่ในกล่องหรือไม่
+        if (IsInsideBox(player.position))
         {
             isRising = true;
         }
 
         if (isRising)
         {
-            // ลอยขึ้นแบบลื่น ๆ
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 targetPos,
@@ -46,10 +43,19 @@ public class RiseWhenPlayerNear : MonoBehaviour
         }
     }
 
-    // วาดเส้นระยะใน Scene
+    bool IsInsideBox(Vector3 point)
+    {
+        Vector3 localPos = point - transform.position;
+
+        return Mathf.Abs(localPos.x) <= boxSize.x / 2 &&
+               Mathf.Abs(localPos.y) <= boxSize.y / 2 &&
+               Mathf.Abs(localPos.z) <= boxSize.z / 2;
+    }
+
+    // วาดกล่องใน Scene
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, detectRange);
+        Gizmos.DrawWireCube(transform.position, boxSize);
     }
 }
