@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - Ground
+  - Liftable
   layers:
   - Default
   - TransparentFX

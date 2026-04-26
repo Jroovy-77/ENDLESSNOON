@@ -34975,10 +34975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3895296f48da4c44886d39ba6d16e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launcher: {fileID: 0}
   targetTag: Player
-  onTriggerActivated:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &803132783
 GameObject:
   m_ObjectHideFlags: 0
@@ -37137,16 +37135,11 @@ MonoBehaviour:
   distance: 5
   minDistance: 1
   maxDistance: 8
-  cameraRadius: 0.15
-  collisionLayers:
-    serializedVersion: 2
-    m_Bits: 383
   height: 1
   mouseSensitivity: 3
   minY: -15
   maxY: 60
   positionSmooth: 10
-  rotationSmooth: 10
 --- !u!1001 &1056726185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67127,22 +67120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3895296f48da4c44886d39ba6d16e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launcher: {fileID: 0}
   targetTag: Player
-  onTriggerActivated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 469860777}
-        m_TargetAssemblyTypeName: FallingObject, Assembly-CSharp
-        m_MethodName: Release
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &2033412912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67609,22 +67588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3895296f48da4c44886d39ba6d16e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launcher: {fileID: 0}
   targetTag: Player
-  onTriggerActivated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 301294537}
-        m_TargetAssemblyTypeName: StoneLauncher, Assembly-CSharp
-        m_MethodName: LaunchStone
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &2107309635
 PrefabInstance:
   m_ObjectHideFlags: 0
