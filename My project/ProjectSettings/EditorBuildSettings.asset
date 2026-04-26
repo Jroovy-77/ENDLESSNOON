@@ -19,7 +19,11 @@ EditorBuildSettings:
     guid: dc61a063e6079664f8b958df6ef513c7
   - enabled: 1
     path: Assets/Tin/End.unity
+<<<<<<< Updated upstream
     guid: a39cec654cb6bac41aae074e80b158fd
+=======
+    guid: 966a68072e58780429ae054172669b08
+>>>>>>> Stashed changes
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

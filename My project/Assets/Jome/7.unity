@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 356decb03293f22498cb5565d128c9da, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 13
-  m_BakeOnSceneLoad: 0
+  m_BakeOnSceneLoad: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -51,7 +51,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
     m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 0
+    m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 12
     m_Resolution: 2
@@ -68,21 +68,21 @@ LightmapSettings:
     m_TextureCompression: 1
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
-    m_BakeBackend: 1
+    m_BakeBackend: 0
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
-    m_PVRSampleCount: 512
+    m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentSampleCount: 500
     m_PVREnvironmentReferencePointCount: 2048
-    m_PVRFilteringMode: 1
-    m_PVRDenoiserTypeDirect: 1
-    m_PVRDenoiserTypeIndirect: 1
-    m_PVRDenoiserTypeAO: 1
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVREnvironmentMIS: 1
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 1
@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 81042f552e56a5349bd5ef9e53d1ac2c, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -119,7 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
 --- !u!1 &415871036
+========
+--- !u!1 &557232205
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,8 +131,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   - component: {fileID: 415871038}
   - component: {fileID: 415871037}
+========
+  - component: {fileID: 557232207}
+  - component: {fileID: 557232206}
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -136,18 +145,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
 --- !u!108 &415871037
+========
+--- !u!108 &557232206
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   m_GameObject: {fileID: 415871036}
+========
+  m_GameObject: {fileID: 557232205}
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0.8941177, b: 0.42352945, a: 1}
+  m_Intensity: 0.7
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -201,22 +218,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
 --- !u!4 &415871038
+========
+--- !u!4 &557232207
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   m_GameObject: {fileID: 415871036}
+========
+  m_GameObject: {fileID: 557232205}
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.42726472, y: -0.367842, z: 0.8207519, w: -0.092214875}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &498269881
+========
+  m_LocalEulerAnglesHint: {x: 31.669, y: -295.341, z: -146.826}
+--- !u!1 &914373916
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,9 +254,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   - component: {fileID: 498269884}
   - component: {fileID: 498269883}
   - component: {fileID: 498269882}
+========
+  - component: {fileID: 914373921}
+  - component: {fileID: 914373920}
+  - component: {fileID: 914373918}
+  - component: {fileID: 914373917}
+  - component: {fileID: 914373922}
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -234,21 +272,43 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
 --- !u!81 &498269882
+========
+--- !u!81 &914373917
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   m_GameObject: {fileID: 498269881}
   m_Enabled: 1
 --- !u!20 &498269883
+========
+  m_GameObject: {fileID: 914373916}
+  m_Enabled: 1
+--- !u!124 &914373918
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914373916}
+  m_Enabled: 1
+--- !u!20 &914373920
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   m_GameObject: {fileID: 498269881}
+========
+  m_GameObject: {fileID: 914373916}
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -293,24 +353,49 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
 --- !u!4 &498269884
+========
+--- !u!4 &914373921
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   m_GameObject: {fileID: 498269881}
+========
+  m_GameObject: {fileID: 914373916}
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.01, y: 0.6126487, z: 3.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &914373922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914373916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c62d2a40e848d44b542da522451282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+<<<<<<<< Updated upstream:My project/Assets/Jome/7.unity
   - {fileID: 498269884}
   - {fileID: 415871038}
+========
+  - {fileID: 914373921}
+  - {fileID: 557232207}
+>>>>>>>> Stashed changes:My project/Assets/8K Skybox Pack Free/Example Scenes/sky-12.unity

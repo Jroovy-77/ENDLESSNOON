@@ -7,7 +7,12 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         // ใส่ชื่อ Scene ที่ต้องการจะเปลี่ยนไปในเครื่องหมาย " "
-        SceneManager.LoadScene("1"); 
+        SceneManager.LoadScene("StartCutSecne");
+    }
+    public void Mainmenu()
+    {
+        // ใส่ชื่อ Scene ที่ต้องการจะเปลี่ยนไปในเครื่องหมาย " "
+        SceneManager.LoadScene("StartGame"); 
     }
     public void MainMenu()
     {

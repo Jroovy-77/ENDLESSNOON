@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using UnityEngine.UI;
 
 public class ShipDoor : MonoBehaviour
 {
@@ -9,7 +12,13 @@ public class ShipDoor : MonoBehaviour
     public Camera gameplayCamera;
     public Camera cutsceneCamera;
 
-    public AudioSource bgmSource; // เพลงพื้นหลัง
+    public AudioSource bgmSource;
+
+    public CanvasGroup fadeGroup;
+    public float fadeDuration = 1.5f;
+
+    [Header("Next Scene")]
+    public string nextSceneName = "NextScene"; // ใส่ชื่อซีนตรงนี้
 
     private bool played = false;
 
@@ -19,6 +28,9 @@ public class ShipDoor : MonoBehaviour
         {
             director.playOnAwake = false;
             director.Stop();
+
+            // 👇 ฟังตอนคัตซีนจบ
+            director.stopped += OnCutsceneFinished;
         }
 
         if (cutsceneCamera != null)
@@ -38,11 +50,9 @@ public class ShipDoor : MonoBehaviour
 
         played = true;
 
-        // ปิดเพลงพื้นหลัง
         if (bgmSource != null)
             bgmSource.Stop();
 
-        // ปิด player / กล้องเกม
         if (player != null)
             player.SetActive(false);
 
@@ -52,8 +62,37 @@ public class ShipDoor : MonoBehaviour
         if (cutsceneCamera != null)
             cutsceneCamera.gameObject.SetActive(true);
 
-        // เล่นคัตซีน
         if (director != null)
             director.Play();
+    }
+
+    // 👇 เรียกตอน Timeline จบ
+    private void OnCutsceneFinished(PlayableDirector pd)
+    {
+        StartCoroutine(FadeAndLoad());
+    }
+    
+    private IEnumerator FadeAndLoad()
+    {
+        float t = 0f;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            if (fadeGroup != null)
+                fadeGroup.alpha = Mathf.Lerp(0, 1, t / fadeDuration);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.3f);
+
+        SceneManager.LoadScene(nextSceneName);
+    }
+
+    private void OnDestroy()
+    {
+        if (director != null)
+            director.stopped -= OnCutsceneFinished;
     }
 }
