@@ -1,20 +1,24 @@
 using UnityEngine;
+using UnityEngine.Events; // ต้องมีตัวนี้เพิ่มมา
 
 public class TrapTrigger : MonoBehaviour
 {
     [Header("Settings")]
-    public StoneLauncher launcher; 
-    public string targetTag = "Player"; // ตั้งชื่อ Tag ที่นี่
+    public string targetTag = "Player";
+
+    [Header("Actions (กด + ใน Inspector เพื่อเพิ่มสิ่งที่อยากให้เกิด)")]
+    public UnityEvent onTriggerActivated; 
 
     private void OnTriggerEnter(Collider other)
     {
-        // เช็คดื้อๆ เลยว่าสิ่งที่เดินเข้ามาชน มี Tag ตรงกับที่ตั้งไว้ไหม
+        // เช็คว่าใช่คนเหยียบไหม
         if (other.CompareTag(targetTag))
         {
-            if (launcher != null)
+            // สั่งให้ทุกอย่างที่อยู่ในลิสต์ทำงาน!
+            if (onTriggerActivated != null)
             {
-                launcher.LaunchStone();
-                Debug.Log("Tag ตรงกัน! ยิงหินออกไปแล้ว");
+                onTriggerActivated.Invoke();
+                Debug.Log("Trigger Activated! สั่งงานทุกอย่างในรายการแล้ว");
             }
         }
     }
