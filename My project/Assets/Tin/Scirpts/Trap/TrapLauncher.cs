@@ -31,6 +31,7 @@ public class TrapLauncher : MonoBehaviour
         if (!_ready) return;
 
         GameObject player = GameObject.FindWithTag("Player");
+        Debug.Log("หา Player: " + (player != null ? player.name : "ไม่เจอ"));
         if (player == null) return;
 
         float dist = Vector3.Distance(transform.position, player.transform.position);
