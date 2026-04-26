@@ -13,7 +13,7 @@ public class ObjectLifter : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             if (_held) Drop();
             else       TryPickup();
