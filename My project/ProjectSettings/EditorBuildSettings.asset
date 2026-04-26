@@ -4,26 +4,6 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Tin/StartGame.unity
-    guid: 04728fe8ea748a94a8b3bad13f7f54c6
-  - enabled: 1
-    path: Assets/Tin/StartCutSecne.unity
-    guid: 6f4cdda82b716e342ab81e9b43cfc0a0
-  - enabled: 1
-    path: Assets/Tin/1.unity
-    guid: 6e34bcd71bc3bf64db484d77e54338e5
-  - enabled: 1
-    path: Assets/Tin/2.unity
-    guid: dc61a063e6079664f8b958df6ef513c7
-  - enabled: 1
-    path: Assets/Tin/End.unity
-<<<<<<< Updated upstream
-    guid: a39cec654cb6bac41aae074e80b158fd
-=======
-    guid: 966a68072e58780429ae054172669b08
->>>>>>> Stashed changes
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_Scenes: []
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
