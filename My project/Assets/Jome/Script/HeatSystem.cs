@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections; // ต้องมีตัวนี้เพื่อใช้หน่วงเวลา (Coroutine)
+using System.Collections;
 
 public class HeatSystem : MonoBehaviour
 {
     [Header("Targets")]
-    public GameObject animatedModel; // ตัวละครร่างเดิน (ที่มี Animator)
-    public GameObject ragdollModel;  // ตัวละครร่างย้วย (Ragdoll)
-    public Transform ragdollHips;    // สะโพกของร่างย้วยไว้เช็คแดดตอนล้ม
+    public GameObject animatedModel; 
+    public GameObject ragdollModel;  
+    public Transform ragdollHips;    
 
     [Header("Visual Settings")]
-    public Renderer[] characterRenderers; // ลาก Mesh ทุกชิ้นมาใส่ (รองรับหลายชิ้น)
+    public Renderer[] characterRenderers; 
     public Color normalColor = Color.white;
     public Color burntColor = Color.black;
 
@@ -28,11 +28,15 @@ public class HeatSystem : MonoBehaviour
     public LayerMask obstacleLayer;
     public float heightOffset = 0.5f;
 
+    [Header("Restart Settings")]
+    // เพิ่มตัวแปรนี้เพื่อปรับเวลาการเกิดใหม่ (หน่วยเป็นวินาที)
+    [Tooltip("ระยะเวลาที่รอ (วินาที) หลังจากตายก่อนจะเริ่มเกมใหม่")]
+    public float restartDelay = 3f; 
+
     private bool isDead = false;
 
     void Start()
     {
-        // เริ่มเกมมา ร่างเดินต้องเปิด ร่างย้วยต้องปิด
         if (animatedModel != null) animatedModel.SetActive(true);
         if (ragdollModel != null) ragdollModel.SetActive(false);
     }
@@ -41,18 +45,15 @@ public class HeatSystem : MonoBehaviour
     {
         if (sunTransform == null || isDead) return;
 
-        // เช็คตำแหน่งว่าตอนนี้ใช้ร่างไหนอยู่
         Transform currentTarget = animatedModel.activeInHierarchy ? animatedModel.transform : ragdollHips;
         if (currentTarget == null) return;
 
         Vector3 origin = currentTarget.position + (Vector3.up * heightOffset);
         
-        // ถ้าเป็น Ragdoll ให้ใช้ตำแหน่งสะโพกตรงๆ
         if (ragdollModel.activeInHierarchy) origin = ragdollHips.position;
 
         bool isInShade = CheckShade(origin);
 
-        // คำนวณความร้อน
         if (isInShade)
             currentHeat -= heatDecreaseRate * Time.deltaTime;
         else
@@ -60,10 +61,8 @@ public class HeatSystem : MonoBehaviour
 
         currentHeat = Mathf.Clamp(currentHeat, 0, maxHeat);
 
-        // อัปเดตสีตัวละคร (ขาว -> ดำ)
         UpdateColor();
 
-        // ถ้าความร้อนเต็ม = ตาย
         if (currentHeat >= maxHeat)
         {
             StartCoroutine(DieRoutine());
@@ -101,20 +100,17 @@ public class HeatSystem : MonoBehaviour
         isDead = true;
         Debug.Log("ตัวไหม้เกรียมจนสลบ!");
 
-        // 1. สลับร่าง: ปิดร่างเดิน เปิดร่างย้วย
         if (animatedModel != null) animatedModel.SetActive(false);
         if (ragdollModel != null)
         {
             ragdollModel.SetActive(true);
-            // ก๊อปปี้ตำแหน่งจากร่างเดินไปร่างย้วยเพื่อให้ล้มตรงจุดเดิม
             ragdollModel.transform.position = animatedModel.transform.position;
             ragdollModel.transform.rotation = animatedModel.transform.rotation;
         }
 
-        // 2. รอ 3 วินาที ให้ผู้เล่นดูร่างที่ไหม้เกรียมล้มย้วย
-        yield return new WaitForSeconds(3f);
+        // ใช้ตัวแปร restartDelay แทนค่าคงที่ 3f
+        yield return new WaitForSeconds(restartDelay);
 
-        // 3. เริ่มเกมใหม่
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
