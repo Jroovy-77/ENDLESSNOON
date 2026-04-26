@@ -14,10 +14,6 @@ public class MainMenu : MonoBehaviour
         // ใส่ชื่อ Scene ที่ต้องการจะเปลี่ยนไปในเครื่องหมาย " "
         SceneManager.LoadScene("StartGame"); 
     }
-    public void MainMenu()
-    {
-        // ใส่ชื่อ Scene ที่ต้องการจะเปลี่ยนไปในเครื่องหมาย " "
-        SceneManager.LoadScene("StartGame");
 
     // ฟังก์ชันสำหรับกดปุ่ม Leave / Quit
     public void QuitGame()
