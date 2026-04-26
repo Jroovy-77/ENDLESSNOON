@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public GameObject dialoguePanel;
     public TMP_Text dialogueText;
 
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public AudioClip messageSound;
+
     private void Awake()
     {
         Instance = this;

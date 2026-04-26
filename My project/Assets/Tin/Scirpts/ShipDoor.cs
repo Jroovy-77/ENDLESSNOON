@@ -4,13 +4,16 @@ using UnityEngine.Playables;
 public class ShipDoor : MonoBehaviour
 {
     public PlayableDirector director;
+
     public GameObject player;
     public Camera gameplayCamera;
     public Camera cutsceneCamera;
 
+    public AudioSource bgmSource; // เพลงพื้นหลัง
+
     private bool played = false;
 
-    private void Start()
+    void Start()
     {
         if (director != null)
         {
@@ -29,12 +32,17 @@ public class ShipDoor : MonoBehaviour
 
         if (!GameManager.Instance.canEnterShip)
         {
-            GameManager.Instance.ShowMessage("Talk to IronMan first!");
+            GameManager.Instance.ShowMessage("Finish the mission first!");
             return;
         }
 
         played = true;
 
+        // ปิดเพลงพื้นหลัง
+        if (bgmSource != null)
+            bgmSource.Stop();
+
+        // ปิด player / กล้องเกม
         if (player != null)
             player.SetActive(false);
 
@@ -44,6 +52,7 @@ public class ShipDoor : MonoBehaviour
         if (cutsceneCamera != null)
             cutsceneCamera.gameObject.SetActive(true);
 
+        // เล่นคัตซีน
         if (director != null)
             director.Play();
     }
