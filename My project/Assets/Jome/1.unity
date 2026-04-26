@@ -22485,8 +22485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071d34bbd8f5f7042b749c7ad5be9910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerName: Ground
-  playerLayerName: Player
 --- !u!54 &49016174
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24311,6 +24309,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1961539867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &240126496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1156876132003676208, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+  m_PrefabInstance: {fileID: 1932831520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &246225481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26762,8 +26765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071d34bbd8f5f7042b749c7ad5be9910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerName: Ground
-  playerLayerName: Player
 --- !u!54 &469860778
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30253,7 +30254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8551286874679983088, guid: 37b9b877b818c224fb13023fd85c174a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.966
+      value: 6.2050004
       objectReference: {fileID: 0}
     - target: {fileID: 8551286874679983088, guid: 37b9b877b818c224fb13023fd85c174a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30918,6 +30919,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6050399736861128791, guid: 26988f13c95845743a8e9cdc670e8421, type: 3}
   m_PrefabInstance: {fileID: 577446349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &580674663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2267803004047104801, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+  m_PrefabInstance: {fileID: 1932831520}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &594617626
 GameObject:
@@ -34976,6 +34982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+  triggerOnlyOnce: 1
   onTriggerActivated:
     m_PersistentCalls:
       m_Calls: []
@@ -35374,6 +35381,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6050399736861128791, guid: 26988f13c95845743a8e9cdc670e8421, type: 3}
   m_PrefabInstance: {fileID: 868845285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &875794682 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7451709777306690542, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+  m_PrefabInstance: {fileID: 1932831520}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &889788958
 PrefabInstance:
@@ -37137,10 +37149,10 @@ MonoBehaviour:
   distance: 5
   minDistance: 1
   maxDistance: 8
-  cameraRadius: 0.15
+  cameraRadius: 0.2
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 383
+    m_Bits: 4294967295
   height: 1
   mouseSensitivity: 3
   minY: -15
@@ -63740,9 +63752,17 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7570919952239377061, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+      propertyPath: ragdollModel
+      value: 
+      objectReference: {fileID: 240126496}
+    - target: {fileID: 7570919952239377061, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
       propertyPath: sunTransform
       value: 
       objectReference: {fileID: 497604598}
+    - target: {fileID: 7570919952239377061, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+      propertyPath: animatedModel
+      value: 
+      objectReference: {fileID: 580674663}
     - target: {fileID: 7570919952239377061, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
       propertyPath: heatDecreaseRate
       value: 50
@@ -63751,6 +63771,18 @@ PrefabInstance:
       propertyPath: heatIncreaseRate
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7570919952239377061, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+      propertyPath: characterRenderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570919952239377061, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+      propertyPath: 'characterRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 875794682}
+    - target: {fileID: 7570919952239377061, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+      propertyPath: 'characterRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2131074233}
     - target: {fileID: 8169775966912405652, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -67128,16 +67160,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+  triggerOnlyOnce: 1
   onTriggerActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 469860777}
-        m_TargetAssemblyTypeName: FallingObject, Assembly-CSharp
-        m_MethodName: Release
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -67610,21 +67643,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
+  triggerOnlyOnce: 1
   onTriggerActivated:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 301294537}
-        m_TargetAssemblyTypeName: StoneLauncher, Assembly-CSharp
-        m_MethodName: LaunchStone
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &2107309635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67759,6 +67781,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6050399736861128791, guid: 26988f13c95845743a8e9cdc670e8421, type: 3}
   m_PrefabInstance: {fileID: 2112913472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2131074233 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6937938726819657564, guid: cb0cf6704af283b4ba47c91360548956, type: 3}
+  m_PrefabInstance: {fileID: 1932831520}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2137145122
 GameObject:
