@@ -32,7 +32,7 @@ public class ShipDoor : MonoBehaviour
     {
         // เปิดเมาส์ในซีนนี้
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.visible = false;
 
         if (director != null)
         {
