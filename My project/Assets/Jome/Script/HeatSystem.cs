@@ -88,9 +88,28 @@ public class HeatSystem : MonoBehaviour
 
         if (Physics.Raycast(startPoint, sunDirection, out RaycastHit hit, rayDistance, obstacleLayer))
         {
+            // 🔥 ถ้ามี Script นี้ แปลว่าคุมด้วย logic แทน Layer
+            TreeShadeBlocker tree = hit.collider.GetComponent<TreeShadeBlocker>();
+
+            if (tree != null)
+            {
+                if (tree.isBlockingSun)
+                {
+                    Debug.DrawLine(startPoint, hit.point, Color.green);
+                    return true; // ยังบังแดด
+                }
+                else
+                {
+                    Debug.DrawLine(startPoint, hit.point, Color.yellow);
+                    return false; // โดนแสงแล้ว
+                }
+            }
+
+            // วัตถุอื่น = บังแดดปกติ
             Debug.DrawLine(startPoint, hit.point, Color.green);
-            return true; 
+            return true;
         }
+
         Debug.DrawRay(startPoint, sunDirection * rayDistance, Color.red);
         return false;
     }
@@ -113,4 +132,16 @@ public class HeatSystem : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void AddHeat(float amount)
+    {
+        if (isDead) return;
+
+        currentHeat += amount;
+        currentHeat = Mathf.Clamp(currentHeat, 0, maxHeat);
+    }
+
+
+
+
+
 }
