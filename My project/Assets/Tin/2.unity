@@ -5666,21 +5666,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &763613826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763613819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b295d1bb89bbf74e8512f4dd87c11c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  talkRange: 3
-  talkUI: {fileID: 1009242452}
-  offset: {x: 0, y: 123.5, z: 0}
 --- !u!114 &763613827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5693,6 +5678,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a243b0e57186e4ca2cc144527d9c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &763613828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763613819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81580cbaf6287c74a9bd1086594701db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 607112593}
+  uiObject: {fileID: 1009242452}
+  showDistance: 4
 --- !u!1001 &799157584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6506,7 +6506,7 @@ MonoBehaviour:
   maxBattery: 3
   missionStarted: 0
   missionComplete: 0
-  canEnterShip: 1
+  canEnterShip: 0
   dialoguePanel: {fileID: 1352327658}
   dialogueText: {fileID: 1653707108}
   audioSource: {fileID: 1041145778}
@@ -42091,7 +42091,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1142397114
+--- !u!114 &1142397119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42100,12 +42100,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142397108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b295d1bb89bbf74e8512f4dd87c11c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 81580cbaf6287c74a9bd1086594701db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talkRange: 1.2
-  talkUI: {fileID: 195979237}
-  offset: {x: 0, y: 100, z: 0}
+  player: {fileID: 607112593}
+  uiObject: {fileID: 195979237}
+  showDistance: 1.5
 --- !u!1001 &1161232506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42575,10 +42575,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2027809976861164898, guid: 0e6e8e179bae2354c9931dd64d712ecc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1142397114}
+      addedObject: {fileID: 1142397109}
     - targetCorrespondingSourceObject: {fileID: 2027809976861164898, guid: 0e6e8e179bae2354c9931dd64d712ecc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1142397109}
+      addedObject: {fileID: 1142397119}
   m_SourcePrefab: {fileID: 100100000, guid: 0e6e8e179bae2354c9931dd64d712ecc, type: 3}
 --- !u!1 &1300546372
 GameObject:
@@ -49763,7 +49763,7 @@ PrefabInstance:
       addedObject: {fileID: 763613825}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f83091eeb01c1b4fb5d46857f58f492, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 763613826}
+      addedObject: {fileID: 763613828}
     - targetCorrespondingSourceObject: {fileID: 882333598136667663, guid: 3f83091eeb01c1b4fb5d46857f58f492, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1599930224}
