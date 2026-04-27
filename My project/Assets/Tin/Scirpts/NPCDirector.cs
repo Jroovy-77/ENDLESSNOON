@@ -3,11 +3,9 @@ using UnityEngine;
 public class NPCDirector : MonoBehaviour
 {
     private bool playerNear = false;
-    public GameObject talkPrompt;
 
     void Start()
     {
-        talkPrompt.SetActive(false);
     }
 
     private void Update()
@@ -33,13 +31,11 @@ public class NPCDirector : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             playerNear = true;
-            talkPrompt.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
             playerNear = false;
-            talkPrompt.SetActive(false);    
     }
 }
