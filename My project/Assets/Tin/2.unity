@@ -348,7 +348,7 @@ PrefabInstance:
       objectReference: {fileID: 1649506205}
     - target: {fileID: 5651597100369759656, guid: 0c5cdfa36d1cd93499e2aae15ae3680c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.57
+      value: 38.65
       objectReference: {fileID: 0}
     - target: {fileID: 5651597100369759656, guid: 0c5cdfa36d1cd93499e2aae15ae3680c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -356,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5651597100369759656, guid: 0c5cdfa36d1cd93499e2aae15ae3680c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.06
+      value: -5.8
       objectReference: {fileID: 0}
     - target: {fileID: 5651597100369759656, guid: 0c5cdfa36d1cd93499e2aae15ae3680c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5352,6 +5352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  player: {fileID: 607112593}
   detectionWidth: 3.29
   detectionLength: 13.5
   detectionHeight: 3.15
@@ -41534,6 +41535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c264716828337fb4e83fdab3d26e8979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 607112593}
   detectionRange: 8
   dashSpeed: 30
   dashDistance: 10
@@ -42490,6 +42492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  player: {fileID: 607112593}
   detectionRange: 8
   attackSpeed: 20
   holdTime: 0.75
@@ -50026,6 +50029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  player: {fileID: 607112593}
   detectionDistance: 21.8
   detectionAngle: 71.7
   rollSpeed: 60
@@ -51534,6 +51538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ecd72fd0790ff47904a45deab08555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 607112593}
   detectionRange: 6
   tiltSpeed: 300
   spinSpeed: 1000
