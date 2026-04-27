@@ -26,5 +26,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tin/End.unity
     guid: a39cec654cb6bac41aae074e80b158fd
+  - enabled: 1
+    path: Assets/Jome/game1.unity
+    guid: 07bb5f16dc568264388c80b35331bc77
+  - enabled: 1
+    path: Assets/Jome/game2.unity
+    guid: eb6d8d08ef7e64d4382202e60516a8c7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
