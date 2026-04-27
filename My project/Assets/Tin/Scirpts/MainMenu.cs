@@ -1,24 +1,36 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // สำคัญ: ต้องมีเพื่อใช้คำสั่งเปลี่ยนฉาก
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    // ฟังก์ชันสำหรับกดปุ่ม Play
-    public void PlayGame()
+    public TextMeshProUGUI usernameText;
+
+    void Start()
     {
-        // ใส่ชื่อ Scene ที่ต้องการจะเปลี่ยนไปในเครื่องหมาย " "
-        SceneManager.LoadScene("StartCutSecne");
-    }
-    public void Mainmenu()
-    {
-        // ใส่ชื่อ Scene ที่ต้องการจะเปลี่ยนไปในเครื่องหมาย " "
-        SceneManager.LoadScene("StartGame"); 
+        string username = PlayerPrefs.GetString("Username", "Player");
+        if (usernameText != null)
+            usernameText.text = "สวัสดี, " + username;
     }
 
-    // ฟังก์ชันสำหรับกดปุ่ม Leave / Quit
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("StartCutSecne");
+    }
+
+    public void Mainmenu()
+    {
+        SceneManager.LoadScene("StartGame");
+    }
+
+    public void OnLeaderboard()
+    {
+        SceneManager.LoadScene("Leaderboard");
+    }
+
     public void QuitGame()
     {
-        Debug.Log("Game is exiting..."); // แสดงข้อความใน Console (เพราะใน Editor เกมจะไม่ปิดจริง)
-        Application.Quit(); // คำสั่งปิดเกม (จะทำงานเมื่อ Build เป็นไฟล์ .exe แล้ว)
+        Debug.Log("Game is exiting...");
+        Application.Quit();
     }
 }

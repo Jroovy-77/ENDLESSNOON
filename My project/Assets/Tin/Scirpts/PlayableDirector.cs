@@ -41,7 +41,7 @@ public class CutsceneFadeToScene : MonoBehaviour
         }
 
         // เปลี่ยนซีน
-        SceneManager.LoadScene("Copy 1");
+        SceneManager.LoadScene("2");
     }
 
     void OnDestroy()

@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Tin/EnterNameScene.unity
+    guid: 785e0a9f8a64e6a4ab101ea3988d57f3
+  - enabled: 1
     path: Assets/Tin/StartGame.unity
     guid: 04728fe8ea748a94a8b3bad13f7f54c6
+  - enabled: 1
+    path: Assets/Tin/Leaderboard.unity
+    guid: 0b8447b670060a749afd5532c761eb6c
   - enabled: 1
     path: Assets/Tin/StartCutSecne.unity
     guid: 6f4cdda82b716e342ab81e9b43cfc0a0
