@@ -37366,7 +37366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   director: {fileID: 2018896917}
   fadePanel: {fileID: 1745691819}
-  nextSceneName: 2
+  nextSceneName: game1
   fadeDuration: 1.5
 --- !u!4 &2021359234 stripped
 Transform:
