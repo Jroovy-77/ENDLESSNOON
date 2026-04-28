@@ -41537,7 +41537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 607112593}
   detectionRange: 8
-  dashSpeed: 30
+  dashSpeed: 15
   dashDistance: 10
   returnSpeed: 3
   cooldown: 2
@@ -43208,7 +43208,7 @@ Transform:
   m_GameObject: {fileID: 1450932316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.228, z: -7.442}
+  m_LocalPosition: {x: 0, y: 1.24, z: -7.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51969,7 +51969,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

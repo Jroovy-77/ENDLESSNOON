@@ -7,6 +7,7 @@ public class BatteryPickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (collected) return;
+        if (!GameManager.Instance.missionStarted) return; // ยังไม่ start หยิบไม่ได้
 
         if (other.CompareTag("Player"))
         {
